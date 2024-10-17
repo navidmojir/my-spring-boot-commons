@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ir.mojir</groupId>
 	<artifactId>my-spring-boot-commons</artifactId>
-	<version>0.0.12</version>
+	<version>0.0.13</version>
 
 	<properties>
 		<java.version>11</java.version>

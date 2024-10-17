@@ -1,5 +1,8 @@
 package ir.mojir.spring_boot_commons.helpers;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * reference: https://github.com/mirhmousavi/Regex.Persian.Language
  * @author n.mojir
@@ -31,4 +34,13 @@ public class RegexHelper {
 	public final static String mobileRegex = "^0[0-9]{10}$|^$";
 	
 	public final static String patternDefaultMessage = "Input pattern not mached";
+	
+	public static String findStrByRegex(String str, String regex) {
+		Pattern pattern = Pattern.compile(regex);
+		Matcher m = pattern.matcher(str);
+		while(m.find()) {
+			return m.group(0);
+		}
+		return null;
+	}
 }
