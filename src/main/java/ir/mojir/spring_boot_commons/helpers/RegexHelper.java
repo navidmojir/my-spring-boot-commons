@@ -1,8 +1,5 @@
 package ir.mojir.spring_boot_commons.helpers;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 /**
  * reference: https://github.com/mirhmousavi/Regex.Persian.Language
  * @author n.mojir
@@ -14,6 +11,8 @@ public class RegexHelper {
 
 	public final static String persianNumCodepoints = "\u06F0-\u06F9";
 	
+	public final static String spaceCodePoints = "\u0020\u2000-\u200F\u2028-\u202F";
+	
 	public final static String punctuationMarksCodepoints = "\u060C\u061B\u061F\u0640\u066A\u066B\u066C";
 	
 	public final static String additionalArabicCharactersCodepoints = "\u0629\u0643\u0649-\u064B\u064D\u06D5";
@@ -22,23 +21,14 @@ public class RegexHelper {
 	
 	
 	
-	public final static String persianTextRegex = "^[-;\\." + persianAlphaCodepoints + persianNumCodepoints + punctuationMarksCodepoints 
-			+ additionalArabicCharactersCodepoints + arabic_numbers_codepoints +"a-zA-Z1-9\\s]{0,255}$";
+	public final static String persianTextRegex = "^[-,;\\." + persianAlphaCodepoints + persianNumCodepoints + punctuationMarksCodepoints 
+			+ additionalArabicCharactersCodepoints + arabic_numbers_codepoints + spaceCodePoints +"a-zA-Z0-9\\s\\(\\)\\/]{0,255}$";
 	
-	public final static String persianFieldRegex = "^[" + persianAlphaCodepoints + additionalArabicCharactersCodepoints + "a-zA-Z0-9\\s]{0,255}$";
+	public final static String persianFieldRegex = "^[-" + persianAlphaCodepoints + additionalArabicCharactersCodepoints + spaceCodePoints + "a-zA-Z0-9\\s\\.\\(\\)]{0,255}$";
 
-	public final static String phoneRegex = "^[0-9]{11}|[0-9]{8}$";
+	public final static String phoneRegex = "^[0-9]{0,15}";
 	
-	public final static String mobileRegex = "^0[0-9]{10}$";
+	public final static String mobileRegex = "^0[0-9]{10}$|^$";
 	
 	public final static String patternDefaultMessage = "Input pattern not mached";
-	
-	public static String findStrByRegex(String str, String regex) {
-		Pattern pattern = Pattern.compile(regex);
-		Matcher m = pattern.matcher(str);
-		while(m.find()) {
-			return m.group(0);
-		}
-		return null;
-	}
 }

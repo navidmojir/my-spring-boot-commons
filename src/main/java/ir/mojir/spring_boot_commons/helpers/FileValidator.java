@@ -81,6 +81,7 @@ public class FileValidator {
 					mimeType, validationCriteria.validMimeTypes));
 		}
 
+		fileInputStream.close();
 		return result;
 	}
 
