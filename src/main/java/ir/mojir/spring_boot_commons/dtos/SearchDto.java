@@ -1,6 +1,6 @@
 package ir.mojir.spring_boot_commons.dtos;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 public class SearchDto <T> {
 	@Valid private T filters;

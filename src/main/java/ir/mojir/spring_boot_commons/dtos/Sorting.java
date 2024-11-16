@@ -1,6 +1,6 @@
 package ir.mojir.spring_boot_commons.dtos;
 
-import javax.validation.constraints.Pattern;
+import jakarta.validation.constraints.Pattern;
 
 public class Sorting {
 	private boolean ascending;
