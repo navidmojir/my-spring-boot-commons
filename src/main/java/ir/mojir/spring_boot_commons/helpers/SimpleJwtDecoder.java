@@ -12,6 +12,8 @@ import ir.mojir.spring_boot_commons.dtos.SimpleJwtToken;
 public class SimpleJwtDecoder {
 	public static SimpleJwtToken decode(String input) throws JsonMappingException, JsonProcessingException {
 		SimpleJwtToken result = new SimpleJwtToken();
+		if(Validations.isBlank(input))
+			return result;
 		String jwtTokenStr = input.replaceAll("Bearer ", "");
 		String[] tokenParts = jwtTokenStr.split("\\.");
 		String jsonStr = new String(Base64.getDecoder().decode(tokenParts[1]));
