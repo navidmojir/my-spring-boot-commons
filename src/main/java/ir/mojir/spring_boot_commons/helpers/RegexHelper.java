@@ -27,6 +27,9 @@ public class RegexHelper {
 	public final static String persianTextRegex = "^[-,;\\." + persianAlphaCodepoints + persianNumCodepoints + punctuationMarksCodepoints 
 			+ additionalArabicCharactersCodepoints + arabic_numbers_codepoints + spaceCodePoints +"a-zA-Z0-9\\s\\(\\)\\/]{0,255}$";
 	
+	public final static String persianLongTextRegex = "^[-,;\\." + persianAlphaCodepoints + persianNumCodepoints + punctuationMarksCodepoints 
+			+ additionalArabicCharactersCodepoints + arabic_numbers_codepoints + spaceCodePoints +"a-zA-Z0-9\\s\\(\\)\\/]{0,1024}$";
+	
 	public final static String persianFieldRegex = "^[-" + persianAlphaCodepoints + additionalArabicCharactersCodepoints + spaceCodePoints + "a-zA-Z0-9\\s\\.\\(\\)]{0,255}$";
 
 	public final static String phoneRegex = "^[0-9]{0,15}";
