@@ -37,4 +37,10 @@ public class DateHelper {
 
         return calendar;
     }
+
+	public static String gregorianToPersian(Date date) {
+		DateConverter dc = new DateConverter();
+		dc.gregorianToPersian(date);
+		return dc.toPersianString();
+	}
 }

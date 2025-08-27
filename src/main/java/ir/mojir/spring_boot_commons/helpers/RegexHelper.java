@@ -26,15 +26,19 @@ public class RegexHelper {
 	
 	public final static String persianTextRegex = "^[-,;\\." + persianAlphaCodepoints + persianNumCodepoints + punctuationMarksCodepoints 
 			+ additionalArabicCharactersCodepoints + arabic_numbers_codepoints + spaceCodePoints +"a-zA-Z0-9\\s\\(\\)\\/]{0,255}$";
-	
+
+	public final static String persianTextRegexMessageFa = "فقط حروف فارسی، انگلیسی، اعداد، نشانه گذاری با حداکثر طول 255 حرف";
 	public final static String persianLongTextRegex = "^[-,;\\." + persianAlphaCodepoints + persianNumCodepoints + punctuationMarksCodepoints 
 			+ additionalArabicCharactersCodepoints + arabic_numbers_codepoints + spaceCodePoints +"a-zA-Z0-9\\s\\(\\)\\/]{0,1024}$";
-	
+	public final static String persianLongTextRegexMessageFa = "فقط حروف فارسی، انگلیسی، اعداد، نشانه گذاری با حداکثر طول 1024 حرف";
 	public final static String persianFieldRegex = "^[-" + persianAlphaCodepoints + additionalArabicCharactersCodepoints + spaceCodePoints + "a-zA-Z0-9\\s\\.\\(\\)]{0,255}$";
-
+	public final static String persianFieldRegexMessageFa = "فقط حروف فارسی، انگلیسی و اعداد با حداکثر طول 255 حرف";
 	public final static String phoneRegex = "^[0-9]{0,15}";
+	public final static String phoneRegexMessageFa = "فقط اعداد با حداکثر طول 15 عدد";
 	
 	public final static String mobileRegex = "^0[0-9]{10}$|^$";
+
+	public final static String mobileRegexMessageFa = "مثال 09121234567";
 	
 	public final static String patternDefaultMessage = "Input pattern not mached";
 	
