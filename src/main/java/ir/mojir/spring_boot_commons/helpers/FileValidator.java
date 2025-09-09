@@ -23,6 +23,8 @@ public class FileValidator {
 
 		private List<String> messages = new ArrayList<>();
 
+		private MimeTypeEnum detectedMimeType;
+
 		public boolean isValid() {
 			return valid;
 		}
@@ -31,6 +33,9 @@ public class FileValidator {
 			return messages;
 		}
 
+		public MimeTypeEnum getDetectedMimeType() {
+			return detectedMimeType;
+		}
 	}
 
 	public static class ValidationCriteria {
@@ -74,6 +79,8 @@ public class FileValidator {
 		}
 		
 		MediaType mimeType = detectMimeType(fileInputStream, fileOriginalName);
+
+		result.detectedMimeType = MimeTypeEnum.of(mimeType);
 		
 		if (!isMimeTypeSupported(mimeType.toString(), validationCriteria.validMimeTypes)) {
 			result.valid = false;

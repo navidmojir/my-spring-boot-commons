@@ -1,5 +1,7 @@
 package ir.mojir.spring_boot_commons.enums;
 
+import org.apache.tika.mime.MediaType;
+
 public enum MimeTypeEnum {
 	IMAGE_PNG("image/png"),
 	IMAGE_JPG("image/jpg"),
@@ -24,7 +26,17 @@ public enum MimeTypeEnum {
 	public String toString() {
 		return this.mime;
 	}
-	
+
+	public static MimeTypeEnum of(MediaType mediaType) {
+		String mediaTypeStr = mediaType.toString();
+		if(mediaTypeStr.contains(";"))
+			mediaTypeStr = mediaTypeStr.split(";")[0];
+		for(MimeTypeEnum m: MimeTypeEnum.values()) {
+			if(m.mime.equals(mediaTypeStr))
+				return m;
+		}
+		return null;
+	}
 	
 	
 }	
