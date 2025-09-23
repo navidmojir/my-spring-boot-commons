@@ -1,5 +1,7 @@
 package ir.mojir.spring_boot_commons.helpers;
 
+import ir.mojir.spring_boot_commons.dtos.PersianDate;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -42,5 +44,17 @@ public class DateHelper {
 		DateConverter dc = new DateConverter();
 		dc.gregorianToPersian(date);
 		return dc.toPersianString();
+	}
+
+	public static Date persianToGregorian(int year, int month, int day) {
+		DateConverter dc = new DateConverter();
+		dc.persianToGregorian(year, month, day);
+		return dc.getDate();
+	}
+
+	public static Date persianToGregorian(PersianDate date) {
+		DateConverter dc = new DateConverter();
+		dc.persianToGregorian(date.getYear(), date.getMonth(), date.getDay());
+		return dc.getDate();
 	}
 }
