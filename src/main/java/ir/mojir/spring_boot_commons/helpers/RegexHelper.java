@@ -37,8 +37,10 @@ public class RegexHelper {
 	public final static String phoneRegexMessageFa = "فقط اعداد با حداکثر طول 15 عدد";
 	
 	public final static String mobileRegex = "^0[0-9]{10}$|^$";
-
 	public final static String mobileRegexMessageFa = "مثال 09121234567";
+	
+	public final static String postalCodeRegex = "^[0-9]{10}$|^$";
+	public final static String postalCodeRegexMessageFa = "کد پستی یک عدد ده رقمی است";
 	
 	public final static String patternDefaultMessage = "Input pattern not mached";
 	
