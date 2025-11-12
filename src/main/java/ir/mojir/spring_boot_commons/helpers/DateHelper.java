@@ -45,6 +45,16 @@ public class DateHelper {
 		dc.gregorianToPersian(date);
 		return dc.toPersianString();
 	}
+	
+	public static PersianDate gregorianToPersianDate(Date date) {
+		DateConverter dc = new DateConverter();
+		dc.gregorianToPersian(date);
+		PersianDate result = new PersianDate();
+		result.setDay(dc.getDay());
+		result.setMonth(dc.getMonth());
+		result.setYear(dc.getYear());
+		return result;
+	}
 
 	public static Date persianToGregorian(int year, int month, int day) {
 		DateConverter dc = new DateConverter();
@@ -53,6 +63,8 @@ public class DateHelper {
 	}
 
 	public static Date persianToGregorian(PersianDate date) {
+		if(date == null)
+			return null;
 		DateConverter dc = new DateConverter();
 		dc.persianToGregorian(date.getYear(), date.getMonth(), date.getDay());
 		return dc.getDate();
