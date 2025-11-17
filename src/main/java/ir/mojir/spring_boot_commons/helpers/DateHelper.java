@@ -47,6 +47,8 @@ public class DateHelper {
 	}
 	
 	public static PersianDate gregorianToPersianDate(Date date) {
+		if(date == null)
+			return null;
 		DateConverter dc = new DateConverter();
 		dc.gregorianToPersian(date);
 		PersianDate result = new PersianDate();
