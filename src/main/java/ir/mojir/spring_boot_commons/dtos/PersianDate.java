@@ -1,8 +1,19 @@
 package ir.mojir.spring_boot_commons.dtos;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+
 public class PersianDate {
+	@Min(1200)
+	@Max(1500)
     private int year;
+	
+	@Min(1)
+	@Max(12)
     private int month;
+	
+	@Min(1)
+	@Max(31)
     private int day;
 
     public int getYear() {
