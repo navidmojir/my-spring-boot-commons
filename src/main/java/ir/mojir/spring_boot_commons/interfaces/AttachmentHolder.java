@@ -5,7 +5,7 @@ import java.util.List;
 import ir.mojir.spring_boot_commons.entities.Attachment;
 
 public interface AttachmentHolder {
-	String getEntityId();
+	long getEntityId();
 	
 	List<Attachment> getAttachments();
 	
