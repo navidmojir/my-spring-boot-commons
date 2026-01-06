@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -80,6 +81,10 @@ public class AttachmentHandler {
     public <T extends AttachmentHolder> void removeAttachment(T entity, long attachmentId) {
         logger.info("deleting attachment with id {} from entity {}", attachmentId, entity.getEntityId());
         Attachment attachment = findAttachmentById(attachmentId);
+        
+        if(attachment.getReferences().size() > 0)
+        	throw new InvalidInputException("Attachment is in use. References: " + attachment.getReferences());
+        
         for(int i = 0; i < entity.getAttachments().size(); i++) {
         	if(entity.getAttachments().get(i).getId() == attachmentId)
         		entity.getAttachments().remove(i);
@@ -87,7 +92,7 @@ public class AttachmentHandler {
         attachmentRepo.delete(attachment);
     }
 
-    private Attachment findAttachmentById(long attachmentId) {
+    public Attachment findAttachmentById(long attachmentId) {
         Optional<Attachment> optAttachment = attachmentRepo.findById(attachmentId);
         if(optAttachment.isEmpty())
             throw new EntityNotFoundException(attachmentId, null);
@@ -128,6 +133,21 @@ public class AttachmentHandler {
 	public void setMaxAttachmentSizeInMegaBytes(int maxAttachmentSizeInMegaBytes) {
 		this.maxAttachmentSizeInMegaBytes = maxAttachmentSizeInMegaBytes;
 	}
-    
+	
+	public void addAttachmentReference(long attachmentId, String key) {
+		Attachment attachment = findAttachmentById(attachmentId);
+		attachment.getReferences().add(key);
+		attachmentRepo.save(attachment);
+	}
+
+	public void removeAttachmentReference(long attachmentId, String key) {
+		Attachment attachment = findAttachmentById(attachmentId);
+		Set<String> references = attachment.getReferences();
+		if(!references.contains(key))
+			throw new InvalidInputException("The reference key " + key + " does not exists for attachment " + attachmentId);
+		attachment.getReferences().remove(key);
+		attachmentRepo.save(attachment);
+	}
+	
     
 }

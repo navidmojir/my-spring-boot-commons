@@ -1,9 +1,13 @@
 package ir.mojir.spring_boot_commons.entities;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import ir.mojir.spring_boot_commons.enums.MimeTypeEnum;
 import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -38,6 +42,10 @@ public class Attachment {
 	private Date createdAt;
 	
 	private String uploaderUserId;
+	
+	@ElementCollection
+	@Column(name = "reference_key")
+	private Set<String> references = new HashSet<>();
 
 	public long getId() {
 		return id;
@@ -110,6 +118,16 @@ public class Attachment {
 	public void setUploaderUserId(String uploaderUserId) {
 		this.uploaderUserId = uploaderUserId;
 	}
+
+	public Set<String> getReferences() {
+		return references;
+	}
+
+	public void setReferences(Set<String> references) {
+		this.references = references;
+	}
+
+	
 	
 	
 	
