@@ -55,6 +55,7 @@ public class AttachmentHandler {
         attachment.setSize(file.getSize());
         attachment.setType(type);
         attachment.setDescription(description);
+        attachment.setFileExtension(getFileExtenstion(file.getOriginalFilename()));
         attachmentRepo.save(attachment);
         
         if(entity.getAttachments() == null)
@@ -63,6 +64,13 @@ public class AttachmentHandler {
         entity.getAttachments().add(attachment);
         	
     }
+	
+	private String getFileExtenstion(String fileName) {
+		String[] splitted = fileName.split("[.]");
+		if(splitted.length > 1)
+			return splitted[splitted.length - 1];
+		return "";
+	}
 
     public <T extends AttachmentHolder> Attachment downloadAttachment(T entity, long attachmentId) {
         logger.info("downloading attachment with id {} from entity with id {}", attachmentId, entity.getEntityId());

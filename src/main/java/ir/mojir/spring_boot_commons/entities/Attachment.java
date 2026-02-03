@@ -28,6 +28,8 @@ public class Attachment {
 	
 	private String fileName;
 	
+	private String fileExtension;
+	
 	@Basic(fetch = FetchType.LAZY)
     @Lob
 	private byte[] bytes;
@@ -125,6 +127,14 @@ public class Attachment {
 
 	public void setReferences(Set<String> references) {
 		this.references = references;
+	}
+
+	public String getFileExtension() {
+		return fileExtension;
+	}
+
+	public void setFileExtension(String fileExtension) {
+		this.fileExtension = fileExtension;
 	}
 
 	

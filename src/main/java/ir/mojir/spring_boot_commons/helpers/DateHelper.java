@@ -71,4 +71,11 @@ public class DateHelper {
 		dc.persianToGregorian(date.getYear(), date.getMonth(), date.getDay());
 		return dc.getDate();
 	}
+	
+	public static String persianDateToString(PersianDate date) {
+		if(date == null)
+			return "";
+		return date.toString();
+			
+	}
 }
