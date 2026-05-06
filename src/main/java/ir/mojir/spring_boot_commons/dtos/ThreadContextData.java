@@ -14,7 +14,10 @@ public class ThreadContextData {
 	private Set<String> roles;
 	
 	private Map<String, Object> extraData;
-	
+
+//	private long currentOrganizationId;
+
+	private String currentOrganizationPath;
 	
 	public String getUsername() {
 		return username;
@@ -54,10 +57,20 @@ public class ThreadContextData {
 	public void setExtraData(Map<String, Object> extraData) {
 		this.extraData = extraData;
 	}
-	
-	
-	
-	
-	
-	
+
+//	public long getCurrentOrganizationId() {
+//		return currentOrganizationId;
+//	}
+//
+//	public void setCurrentOrganizationId(long currentOrganizationId) {
+//		this.currentOrganizationId = currentOrganizationId;
+//	}
+
+	public String getCurrentOrganizationPath() {
+		return currentOrganizationPath;
+	}
+
+	public void setCurrentOrganizationPath(String currentOrganizationPath) {
+		this.currentOrganizationPath = currentOrganizationPath;
+	}
 }
