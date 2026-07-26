@@ -157,5 +157,20 @@ public class AttachmentHandler {
 		attachmentRepo.save(attachment);
 	}
 	
+	public <T extends AttachmentHolder> Attachment getLastPersonalImage(T entity) {
+		Attachment result = null;
+		for(Attachment attachment: getAllAttachments(entity)) {
+			if(attachment.getType().equals("PERSONAL_IMAGE")) {
+				if(result == null)
+					result = attachment;
+				else {
+					if(attachment.getCreatedAt().after(result.getCreatedAt()))
+						result = attachment;
+				}
+			}
+		}
+		
+		return result;
+	}
     
 }
