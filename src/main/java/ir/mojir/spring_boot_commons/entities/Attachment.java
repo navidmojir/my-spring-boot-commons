@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ir.mojir.spring_boot_commons.enums.MimeTypeEnum;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
@@ -30,6 +32,7 @@ public class Attachment {
 	
 	private String fileExtension;
 	
+	@JsonIgnore
 	@Basic(fetch = FetchType.LAZY)
     @Lob
 	private byte[] bytes;

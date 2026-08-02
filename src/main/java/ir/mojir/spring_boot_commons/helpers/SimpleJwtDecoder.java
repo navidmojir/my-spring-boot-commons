@@ -14,7 +14,7 @@ public class SimpleJwtDecoder {
 		SimpleJwtToken result = new SimpleJwtToken();
 		if(Validations.isBlank(input))
 			return result;
-		String jwtTokenStr = input.replaceAll("Bearer ", "");
+		String jwtTokenStr = input.replaceAll("Bearer ", "").replaceAll("bearer ", "");
 		String[] tokenParts = jwtTokenStr.split("\\.");
 		String jsonStr = new String(Base64.getUrlDecoder().decode(tokenParts[1]));
 		ObjectMapper objectMapper = new ObjectMapper();
