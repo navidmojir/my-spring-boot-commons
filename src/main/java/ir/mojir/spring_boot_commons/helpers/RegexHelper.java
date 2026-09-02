@@ -42,7 +42,10 @@ public class RegexHelper {
 	public final static String postalCodeRegex = "^[0-9]{10}$|^$";
 	public final static String postalCodeRegexMessageFa = "کد پستی یک عدد ده رقمی است";
 	
-	public final static String patternDefaultMessage = "Input pattern not mached";
+	public final static String timeRegex = "^(?:[01]\\d|2[0-3]):[0-5]\\d$";
+	public final static String timeRegexMessageFa = "زمان در فرمت مشابه 21:45 معتبر است";
+	
+//	public final static String patternDefaultMessage = "Input pattern not mached";
 	
 	public static String findStrByRegex(String str, String regex) {
 		Pattern pattern = Pattern.compile(regex);

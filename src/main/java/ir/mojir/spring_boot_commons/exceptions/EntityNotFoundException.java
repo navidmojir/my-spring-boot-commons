@@ -13,7 +13,7 @@ public class EntityNotFoundException extends ServiceException{
 	}
 	
 	public EntityNotFoundException(long id, Throwable e) {
-		this("The entity with id " + id + " was not found", e);
+		this("موجودیت با شناسه " + id + " یافت نشد", e);
 	}
 	
 	public EntityNotFoundException(String message, Throwable e) {
