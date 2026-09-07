@@ -42,8 +42,10 @@ public class PersianDate {
 
 	@Override
 	public String toString() {
-		return  year + "/" + month + "/" + day;
+//		return  year + "/" + month + "/" + day;
+		return String.format("%04d/%02d/%02d", year, month, day);
 	}
+	
     
     
 }
